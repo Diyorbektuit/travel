@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'mysite',
     'polls_new',
     'rest_framework',
-    "bootstrap5",
+    'bootstrap5',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -80,9 +81,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'travelsite',
+        'NAME': 'mir_travel',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': 'miralam0588',
         'HOST': 'localhost',
         'PORT': '5432',
     }
