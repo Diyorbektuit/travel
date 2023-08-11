@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -14,3 +15,11 @@ class TouristPlace(models.Model):
         return self.name
 
 
+class PaymentItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(TouristPlace, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+                                                                                    #for payment
+    def __str__(self):
+        return f"{self.user.username}'s PaymentItem: {self.item.name}"

@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>TRAVELER - Free Travel Website Template</title>
+    <title>TRAVELER</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
+    <link rel="shortcut icon" href="{% static 'img/travelchik.png' %}" type="image/x-icon">
     <!-- Favicon -->
     <link href="{% static 'img/favicon.ico' %}" rel="icon">
 
@@ -34,9 +34,9 @@
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                        <p><i class="fa fa-envelope mr-2"></i>travel@gmail.com</p>
                         <p class="text-body px-3">|</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+998901234567</p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
@@ -80,17 +80,23 @@
                         <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                         <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
                         <a href="{% url 'package' %}" class="nav-item nav-link active">Tour Packages</a>
+                        <a href="{% url 'contact' %}" class="nav-item nav-link">Payment</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <a href="{% url 'blog' %}" class="dropdown-item">Blog Grid</a>
-                                <a href="{% url 'single' %}" class="dropdown-item">Blog Detail</a>
                                 <a href="{% url 'destination' %}" class="dropdown-item">Destination</a>
                                 <a href="{% url 'guide' %}" class="dropdown-item">Travel Guides</a>
                                 <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Booking</a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="{% url 'blog' %}" class="dropdown-item">Rent a car</a>
+                                <a href="{% url 'blog' %}" class="dropdown-item">Restaurant</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -123,20 +129,16 @@
                     <div class="col-md-10">
                         <div class="row">
                             <div class="col-md-3">
-                                <div class="mb-3 mb-md-0">
-                                    <select class="custom-select px-4" style="height: 47px;">
-                                        <option selected>Destination</option>
-                                        <option value="1">Destination 1</option>
-                                        <option value="2">Destination 1</option>
-                                        <option value="3">Destination 1</option>
-                                    </select>
+                                <div class="form-group">
+                                    <input type="text" class="form-control p-4" placeholder="Your name" required="required" />
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3 mb-md-0">
-                                    <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
-                                    </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control p-4" placeholder="Your email" required="required" />
+                                </div>
+
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -150,16 +152,23 @@
                                 <div class="mb-3 mb-md-0">
                                     <select class="custom-select px-4" style="height: 47px;">
                                         <option selected>Duration</option>
-                                        <option value="1">Duration 1</option>
-                                        <option value="2">Duration 1</option>
-                                        <option value="3">Duration 1</option>
+                                        <option value="1">2 weeks</option>
+                                        <option value="2">1 month</option>
+                                        <option value="3">2 months</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Submit</button>
+                        <button class="btn btn-block" type="submit" style="height: 47px; margin-top: -2px; ">
+                            <a href="{% url 'package' %}" style="display: inline-block;">
+                            BOOK A TOUR
+                            <span style="vertical-align: middle; margin-left: 5px;">
+                                <i class="fa fa-long-arrow-right"></i>
+                            </span>
+                            </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -208,7 +217,7 @@
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                    <h5 class="m-0">$350</h5>
+                                    <h5 class="m-0">$450</h5>
                                 </div>
                             </div>
                         </div>
@@ -223,11 +232,11 @@
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
                                 <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">Discover amazing places of the world with us</a>
+                            <a class="h5 text-decoration-none" href="">It won't be boring with us</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                    <h5 class="m-0">$350</h5>
+                                    <h5 class="m-0">$250</h5>
                                 </div>
                             </div>
                         </div>
@@ -242,7 +251,7 @@
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
                                 <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">Discover amazing places of the world with us</a>
+                            <a class="h5 text-decoration-none" href="">Travel the world with us</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
@@ -261,11 +270,11 @@
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
                                 <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">Discover amazing places of the world with us</a>
+                            <a class="h5 text-decoration-none" href="">Explore the most unusual places</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                    <h5 class="m-0">$350</h5>
+                                    <h5 class="m-0">$300</h5>
                                 </div>
                             </div>
                         </div>
@@ -280,11 +289,11 @@
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
                                 <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="">Discover amazing places of the world with us</a>
+                            <a class="h5 text-decoration-none" href="">Sunbathe in the sun</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                    <h5 class="m-0">$350</h5>
+                                    <h5 class="m-0">$320</h5>
                                 </div>
                             </div>
                         </div>
@@ -318,7 +327,7 @@
                         <img class="img-fluid" src="{% static 'img/destination-2.jpg' %}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="">
                             <h5 class="text-white">United Kingdom</h5>
-                            <span>100 Cities</span>
+                            <span>120 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -327,7 +336,7 @@
                         <img class="img-fluid" src="{% static 'img/destination-3.jpg' %}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="">
                             <h5 class="text-white">Australia</h5>
-                            <span>100 Cities</span>
+                            <span>77 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -336,7 +345,7 @@
                         <img class="img-fluid" src="{% static 'img/destination-4.jpg' %}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="">
                             <h5 class="text-white">India</h5>
-                            <span>100 Cities</span>
+                            <span>201 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -345,7 +354,7 @@
                         <img class="img-fluid" src="{% static 'img/destination-5.jpg' %}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="">
                             <h5 class="text-white">South Africa</h5>
-                            <span>100 Cities</span>
+                            <span>55 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -354,7 +363,7 @@
                         <img class="img-fluid" src="{% static 'img/destination-6.jpg' %}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="">
                             <h5 class="text-white">Indonesia</h5>
-                            <span>100 Cities</span>
+                            <span>70 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -371,7 +380,7 @@
                 <a href="" class="navbar-brand">
                     <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
                 </a>
-                <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
+                <p>Our task is to provide you with the best vacation in the best places</p>
                 <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
                 <div class="d-flex justify-content-start">
                     <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
@@ -383,53 +392,32 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
+                    <a class="text-white-50 mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white-50 mb-2" href="{% url 'destination' %}"><i class="fa fa-angle-right mr-2"></i>Destination</a>
+                    <a class="text-white-50 mb-2" href="{% url 'service' %}"><i class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white-50 mb-2" href="{% url 'package' %}"><i class="fa fa-angle-right mr-2"></i>Packages</a>
+                    <a class="text-white-50 mb-2" href="{% url 'guide' %}"><i class="fa fa-angle-right mr-2"></i>Guides</a>
+                    <a class="text-white-50 mb-2" href="{% url 'testimonial' %}"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
                     <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
+                    <a class="text-white-50 mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white-50 mb-2" href="{% url 'destination' %}"><i class="fa fa-angle-right mr-2"></i>Destination</a>
+                    <a class="text-white-50 mb-2" href="{% url 'service' %}"><i class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white-50 mb-2" href="{% url 'package' %}"><i class="fa fa-angle-right mr-2"></i>Packages</a>
+                    <a class="text-white-50 mb-2" href="{% url 'guide' %}"><i class="fa fa-angle-right mr-2"></i>Guides</a>
+                    <a class="text-white-50 mb-2" href="{% url 'testimonial' %}"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
                     <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
-                <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-3">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
-        <div class="row">
-            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white-50">Copyright &copy; <a href="#">Domain</a>. All Rights Reserved.</a>
-                </p>
-            </div>
-            <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a>
-                </p>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Tashkent, UZBEKISTAN</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+998901234567</p>
+                <p><i class="fa fa-envelope mr-2"></i>travel@gmail.com</p>
             </div>
         </div>
     </div>
