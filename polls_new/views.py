@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.sessions.models import Session
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect, get_object_or_404
@@ -40,10 +41,6 @@ class ServiceView(TemplateView):
 
 class TestimonialView(TemplateView):
     template_name = 'testimonial.html'
-
-
-# class PaymentView(TemplateView):
-#     template_name = 'payment.html'
 
 
 @login_required(login_url='login/')        #отображение на корзинке
@@ -88,28 +85,21 @@ def calculate_subtotal(products_in_cart):     #для цен
     return subtotal
 
 
-# def calculate_shipping():                       #для shipping
-#     shipping_cost = 10
-#     return shipping_cost
+def summ_views(request):
+    session = Session.objects.get(session_key=request.session.session_key)
+    products_in_cart = session.get('products_in_cart', [])
 
+    subtotal = calculate_subtotal(products_in_cart)
 
-# def summ_views(request):
-#     session = Session.objects.get(session_key=request.session.session_key)
-#     products_in_cart = session.get('products_in_cart', [])
-#
-#     subtotal = calculate_subtotal(products_in_cart)
-#     shipping = calculate_shipping()
-#
-#     total = subtotal + shipping
-#     print(total)
-#     print(subtotal)                                                                    #общая сумма
-#     context = {
-#         'products_in_cart': products_in_cart,
-#         'subtotal': subtotal,
-#         'shipping': shipping,
-#         'total': total
-#     }
-#
-#     return render(request, 'basket.html', context)
+    total = subtotal
+    print(total)
+    print(subtotal)                                                                    #общая сумма
+    context = {
+        'products_in_cart': products_in_cart,
+        'subtotal': subtotal,
+        'total': total
+    }
+
+    return render(request, 'basket.html', context)
 
 

@@ -13,7 +13,6 @@ urlpatterns = [
     path('package/', views.PackageView.as_view(), name='package'),
     path('service/', views.ServiceView.as_view(), name='service'),
     path('testimonial/', views.TestimonialView.as_view(), name='testimonial'),
-    path('payment/', views.payment_views, name='payment'),
     path('remove/<int:product_id>/', views.remove_from_basket, name='remove_from_basket'),
     #path('summ_views/<int:product_id>/', views.summ_views, name='summ_views'),
 
