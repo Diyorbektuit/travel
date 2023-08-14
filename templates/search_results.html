@@ -1,7 +1,6 @@
 {% load static %}
 
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>TRAVELER</title>
@@ -14,7 +13,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -25,30 +24,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="shortcut icon" href="{% static 'images/for_site.png' %}" type="image/x-icon">
-    <style>
-        @media (min-width: 800px) {
-        .h-custom {
-        height: 90vh !important;
-        }
-
-        .remove_form {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin-bottom: 20px; /* Отступ между формами */
-          left: 10px;
-        }
-
-        .remove-button {
-          margin-top: 10px; /* Отступ между кнопками */
-        }
-
-    </style>
 </head>
-
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid bg-light pt-3 d-none d-lg-block">
@@ -117,7 +93,7 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
-                        <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                        <a href="{% url 'about' %}" class="nav-item nav-link active">About</a>
                         <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
                         <a href="{% url 'package' %}" class="nav-item nav-link">Packages</a>
                         <a href="{% url 'contact' %}" class="nav-item nav-link">Payment</a>
@@ -154,130 +130,32 @@
         </div>
     </div>
     <!-- Navbar End -->
-
-
-    <!-- Header Start -->
-    <div class="container-fluid page-header">
+    <nav class="navbar">
         <div class="container">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-                <h3 class="display-4 text-white text-uppercase">Payment</h3>
-                <div class="d-inline-flex text-white">
-                    <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'index' %}">Home</a></p>
-                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                    <p class="m-0 text-uppercase">Payment</p>
-                </div>
-            </div>
         </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h4 class="searching">Search Results for "{{ query }}"</h4>
+        {% if results %}
+            <ul>
+                {% for product in results %}
+                    <li>
+                        <h4>{{ product.name }}</h4>
+                        <p>Description: {{ product.description }}</p>
+                        <p>Price: {{ product.price }}</p>
+                        {% if product.photo %}
+                            <img src="{{ product.photo.url }}" alt="{{ product.name }}" width="150">
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No products found.</p>
+        {% endif %}
     </div>
-    <!-- Header End -->
 
-  <section class="h-100" style="background-color: white;">
-  <div class="container py-5 h-60">
-    <div class="row d-flex justify-content-center align-items-center h-50">
-      <div class="col">
-        <div class="card">
-          <div class="card-body p-8">
-
-            <div class="row">
-
-              <div class="col-lg-7">
-                <h5 class="mb-3"><a href="{% url 'index' %}" class="text-body"><i
-                      class="fas fa-long-arrow-alt-left me-2"></i>Home</a></h5>
-                <hr>
-
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                  <div>
-                    <p class="mb-1">Payment</p>
-                  </div>
-
-                </div>
-
-
-              </div>
-              <div class="col-lg-5">
-
-                <div class="card bg-primary text-white rounded-3">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                      <h5 class="mb-0">Card details</h5>
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                        class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
-                    </div>
-
-                    <p class="small mb-2">Card type</p>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-visa fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
-
-                    <form class="mt-4">
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" class="form-control form-control-lg" size="17"
-                          placeholder="Cardholder's Name" />
-                        <label class="form-label" for="typeName">Cardholder's Name</label>
-                      </div>
-
-                      <div class="form-outline form-white mb-4">
-                        <input type="number" id="typeNumber" class="form-control form-control-lg" size="17"
-                          placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                        <label class="form-label" for="typeText">Card Number</label>
-                      </div>
-
-                      <div class="row mb-4">
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="number" id="typeExp" class="form-control form-control-lg"
-                              placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
-                            <label class="form-label" for="typeExp">Expiration</label>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="password" id="typeText" class="form-control form-control-lg"
-                              placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                            <label class="form-label" for="typeText">Cvv</label>
-                          </div>
-                        </div>
-                      </div>
-
-                    </form>
-
-                    <hr class="my-4">
-
-                    <div class="d-flex justify-content-between">
-                        <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">${% for product in products_in_cart %}{{ product.price }}{% if not forloop.last %} + {% endif %}{% endfor %}</p>
-                    </div>
-
-                    <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total(Incl. taxes)</p>
-                        <p class="mb-2">${{ total }}</p>
-                    </div>
-
-                    <button type="button" class="btn btn-info btn-block btn-lg">
-                      <div class="d-flex justify-content-between">
-                        <p class="mb-2">${{ total }}</p>
-                        <span>To pay <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                      </div>
-                    </button>
-
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <!-- Footer Start -->
+<!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
@@ -321,10 +199,14 @@
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
                 <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Tashkent, UZBEKISTAN</p>
                 <p><i class="fa fa-phone-alt mr-2"></i>+998901234567</p>
-                <p><i class="fa fa-envelope mr-2"></i>travel@gmail.com</p>
+                <p><i class="fa fa-envelope mr-2"></i>travel.gmail.com</p>
+                <div class="w-100">
+
+                </div>
             </div>
         </div>
     </div>
+
     <!-- Footer End -->
 
 

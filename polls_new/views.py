@@ -42,6 +42,20 @@ class ServiceView(TemplateView):
 class TestimonialView(TemplateView):
     template_name = 'testimonial.html'
 
+def search_results_view(request):
+    query = request.GET.get('query', '')
+    results = []
+
+    if query:
+        results = TouristPlace.objects.filter(name__icontains=query)
+
+    context = {
+        'query': query,
+        'results': results,
+    }
+
+    return render(request, 'search_results.html', context)
+
 
 @login_required(login_url='login/')        #отображение на корзинке
 def profile_view(request):
