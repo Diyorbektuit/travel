@@ -132,11 +132,11 @@
     </div>
     <!-- Navbar End -->
     <div class="container mt-4">
-        <h1>Add Product</h1>
+        <h1>Add Car</h1>
         <form method="post" action="{% url 'add_product' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                <label for="name">Product Name</label>
+                <label for="name">Car Name</label>
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="form-group">
@@ -148,10 +148,10 @@
                 <input type="number" step="0.01" class="form-control" id="price" name="price" required>
             </div>
             <div class="form-group">
-                <label for="photo">Product Photo</label>
+                <label for="photo">Car Photo</label>
                 <input type="file" class="form-control-file" id="photo" name="photo" accept="image/*" required>
             </div>
-            <button type="submit" class="btn btn-primary">Add Product</button>
+            <button type="submit" class="btn btn-primary">Add Car</button>
         </form>
     </div>
     <!-- Footer Start -->
