@@ -1,10 +1,11 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.sessions.models import Session
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
 from .models import TouristPlace, PaymentItem
+from account.forms import CarForm
 
 
 class AboutView(TemplateView):
@@ -41,6 +42,23 @@ class ServiceView(TemplateView):
 
 class TestimonialView(TemplateView):
     template_name = 'testimonial.html'
+
+
+@user_passes_test(lambda user: user.is_superuser)
+def add_car(request):
+    if request.method == 'POST':
+        form = CarForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.user = request.user
+            product.save()
+            return redirect('my_products')
+        else:
+            print("Form is not valid:", form.errors)
+    else:
+        form = CarForm()
+    return render(request, 'add_product.html', {'form': form})
+
 
 def search_results_view(request):
     query = request.GET.get('query', '')
