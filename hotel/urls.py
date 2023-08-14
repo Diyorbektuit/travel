@@ -7,8 +7,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('hotels/', views.hotel_list, name="hotels"),
     path('hotels/<int:pk>/', views.hotel_detail, name="hotel")
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
