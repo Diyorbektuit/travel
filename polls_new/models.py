@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.contrib import admin
 
 # Create your models here.
 
@@ -23,3 +24,37 @@ class PaymentItem(models.Model):
                                                                                     #for payment
     def __str__(self):
         return f"{self.user.username}'s PaymentItem: {self.item.name}"
+
+
+class TouristPlaceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'location', 'price')
+    list_filter = ('location',)
+    search_fields = ('name', 'location')
+
+    def has_change_permission(self, request, obj=None):
+        if obj is not None and obj.something_specific:
+            return False
+        return True
+
+    def has_delete_permission(self, request, obj=None):
+        if obj is not None and obj.something_specific:
+            return False
+        return True
+
+
+class PaymentItemAdmin(admin.ModelAdmin):
+    list_display = ('user', 'item', 'quantity')
+    list_filter = ('user',)
+    search_fields = ('user__username', 'item__name')
+
+    def has_change_permission(self, request, obj=None):
+        if obj is not None and request.user.is_superuser:
+            return False
+        return True
+
+    def has_delete_permission(self, request, obj=None):
+        if obj is not None and request.user.is_superuser:
+            return False
+        return True
+
+
