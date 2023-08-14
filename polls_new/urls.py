@@ -17,6 +17,7 @@ urlpatterns = [
     path('search/', views.search_results_view, name='search_results'),
     path('add/', views.add_car, name='add_car'),
     #path('summ_views/<int:product_id>/', views.summ_views, name='summ_views'),
+    path('car/', views.CarView.as_view(), name='car'),
 
 ]
 

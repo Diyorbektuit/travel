@@ -59,6 +59,8 @@ def add_car(request):
         form = CarForm()
     return render(request, 'add_product.html', {'form': form})
 
+class CarView(TemplateView):
+    template_name = 'car.html'
 
 def search_results_view(request):
     query = request.GET.get('query', '')
