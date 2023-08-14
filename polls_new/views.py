@@ -42,6 +42,9 @@ class ServiceView(TemplateView):
 class TestimonialView(TemplateView):
     template_name = 'testimonial.html'
 
+class CarView(TemplateView):
+    template_name = 'car.html'
+
 def search_results_view(request):
     query = request.GET.get('query', '')
     results = []

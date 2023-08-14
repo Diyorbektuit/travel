@@ -16,6 +16,7 @@ urlpatterns = [
     path('remove/<int:product_id>/', views.remove_from_basket, name='remove_from_basket'),
     path('search/', views.search_results_view, name='search_results'),
     #path('summ_views/<int:product_id>/', views.summ_views, name='summ_views'),
+    path('car/', views.CarView.as_view(), name='car'),
 
 ]
 
