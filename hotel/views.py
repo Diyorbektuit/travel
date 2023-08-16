@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Hotel
 from django.contrib import messages
+from django.shortcuts import render
 
 
 def hotel_list(request):
@@ -9,8 +10,17 @@ def hotel_list(request):
 
 
 def hotel_detail(request, pk):
-    hotel = Hotel.objects.get(pk=pk)
-    return render(request, 'hotel_detail.html', {hotel:'hotel'})
+    hotel = Hotel.objects.get(id=pk)
+    contex = {'hotel': hotel}
+    return render(request, 'hotel_detail.html', contex)
+
+
+def hotel_booking(request, pk):
+    booking = Hotel.objects.get(id=pk)
+    contex = {'booking': booking}
+    return render(request, 'basket_hotel.html', contex)
+
+
 
 
 

@@ -96,25 +96,19 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
                         <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-                        <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
                         <a href="{% url 'package' %}" class="nav-item nav-link">Packages</a>
                         <a href="{% url 'contact' %}" class="nav-item nav-link">Payment</a>
+                        <a href="{% url 'hotels' %}" class="nav-item nav-link">Hotel booking</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <a href="{% url 'blog' %}" class="dropdown-item">Blog Grid</a>
                                 <a href="{% url 'destination' %}" class="dropdown-item">Destination</a>
                                 <a href="{% url 'guide' %}" class="dropdown-item">Travel Guides</a>
                                 <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
+
                             </div>
-                        </div>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Booking</a>
-                            <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="{% url 'blog' %}" class="dropdown-item">Rent a car</a>
-                                <a href="{% url 'blog' %}" class="dropdown-item">Restaurant</a>
                             </div>
-                        </div>
+
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Search</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
@@ -313,40 +307,6 @@
     </div>
     <!-- Destination Start -->
 
-
-    <!-- Service Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
-                <h1>Tours & Travel Services</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-route mx-auto mb-4"></i>
-                        <h5 class="mb-2">Travel Guide</h5>
-                        <p class="m-0">Showing the way during the rest</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
-                        <h5 class="mb-2">Ticket Booking</h5>
-                        <p class="m-0">You can book tickets</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                        <i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
-                        <h5 class="mb-2">Hotel Booking</h5>
-                        <p class="m-0">You can book hotels</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
 
 
     <!-- Packages Start -->
@@ -721,7 +681,6 @@
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>About</a>
                     <a class="text-white-50 mb-2" href="{% url 'destination' %}"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="{% url 'service' %}"><i class="fa fa-angle-right mr-2"></i>Services</a>
                     <a class="text-white-50 mb-2" href="{% url 'package' %}"><i class="fa fa-angle-right mr-2"></i>Packages</a>
                     <a class="text-white-50 mb-2" href="{% url 'guide' %}"><i class="fa fa-angle-right mr-2"></i>Guides</a>
                     <a class="text-white-50 mb-2" href="{% url 'testimonial' %}"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
@@ -733,7 +692,6 @@
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>About</a>
                     <a class="text-white-50 mb-2" href="{% url 'destination' %}"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="{% url 'service' %}"><i class="fa fa-angle-right mr-2"></i>Services</a>
                     <a class="text-white-50 mb-2" href="{% url 'package' %}"><i class="fa fa-angle-right mr-2"></i>Packages</a>
                     <a class="text-white-50 mb-2" href="{% url 'guide' %}"><i class="fa fa-angle-right mr-2"></i>Guides</a>
                     <a class="text-white-50 mb-2" href="{% url 'testimonial' %}"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>

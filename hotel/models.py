@@ -6,15 +6,16 @@ class Hotel(models.Model):
     name = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     address = models.CharField(max_length=200)
-    cost = models.CharField(max_length=10)
+    cost = models.IntegerField()
     description = models.TextField()
-    img = models.ImageField(upload_to='images/', blank=True, null=True)
+    img = models.ImageField(upload_to='images', blank=True, null=True)
+
 
     def __str__(self):
         return self.name
 
 
-#class HotelBooking(models.Model):
+
 
 
 

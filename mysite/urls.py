@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
 from account import views
 
 urlpatterns = [
@@ -23,5 +25,8 @@ urlpatterns = [
     path("", include("polls_new.urls")),
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('register/', views.CustomRegisterView.as_view(), name='register'),
+    path('', include('hotel.urls')),
 
-]
+
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

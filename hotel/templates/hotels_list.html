@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <html lang="en">
@@ -15,7 +16,6 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
@@ -36,7 +36,7 @@
                     <div class="d-inline-flex align-items-center">
                         <p><i class="fa fa-envelope mr-2"></i>travel@gmail.com</p>
                         <p class="text-body px-3">|</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+998901234567</p>
+                        <p><i class="fa fa-phone"></i>+998901234567</p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
@@ -50,10 +50,10 @@
                         <a class="text-primary px-3" href="">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a class="text-primary px-3" href="">
+                        <a class="text-primary px-3" href="https://www.instagram.com/miralam_allamov/">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a class="text-primary pl-3" href="">
+                        <a class="text-primary pl-3" href="https://www.youtube.com/@Mirafzal_Akhtamov">
                             <i class="fab fa-youtube"></i>
                         </a>
                         <a class="text-primary pl-3" href="">
@@ -61,7 +61,7 @@
                         <a class="text-primary pl-3" href="">
                             <i class="fa fa-user"></i>
                         </a>
-                        <a href="/login">
+                        <a class="text-primary pl-1" href="/login">
                             <span>
                                 Login
                             </span>
@@ -69,7 +69,7 @@
                         <a class="text-primary pl-3" href="">
                             <i class="fa fa-user-plus"></i>
                         </a>
-                        <a href="/register">
+                        <a class="text-primary pl-1" href="/register">
                             <span>
                                 Sign up
                             </span>
@@ -94,25 +94,30 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+                        <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
                         <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-                        <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
-                        <a href="{% url 'package' %}" class="nav-item nav-link active">Tour Packages</a>
+                        <a href="{% url 'package' %}" class="nav-item nav-link">Packages</a>
                         <a href="{% url 'contact' %}" class="nav-item nav-link">Payment</a>
+                        <a href="{% url 'hotels' %}" class="nav-item nav-link">Hotel booking</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <a href="{% url 'blog' %}" class="dropdown-item">Blog Grid</a>
                                 <a href="{% url 'destination' %}" class="dropdown-item">Destination</a>
                                 <a href="{% url 'guide' %}" class="dropdown-item">Travel Guides</a>
                                 <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
+
                             </div>
                         </div>
+
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Booking</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Search</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="{% url 'blog' %}" class="dropdown-item">Rent a car</a>
-                                <a href="{% url 'blog' %}" class="dropdown-item">Restaurant</a>
+                                <form class="form-inline" action="{% url 'search_results' %}" method="GET">
+                                  <input class="form-control mr-sm-2" type="text" name="query" placeholder="Product name" aria-label="Search">
+                                  <button class="btn nav_search-btn" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                  </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -150,39 +155,45 @@
 
 
 <!-- Carousel wrapper -->
-<div
-  class="carousel slide carousel-dark text-center"
-  data-mdb-ride="carousel"
-  id="{{ forloop.counter }}"
->
-
-{% for hotel in hotels %}
-          <div class="col-lg-4 d-none d-lg-block">
-            <div class="card">
-
-                <img src="{% static 'img/blog-1.jpg' %}" alt="#" />
-
-              <div class="card-body">
-                <h5 class="card-title">{{ hotel.name }}</h5>
-                <p class="card-text">
-                  {{ hotel.city }}
-                </p>
-                <a href="/service/hotels/{{ hotel.id }}" class="btn btn-primary">Read more ...</a>
-              </div>
+<div class="carousel slide carousel-dark text-center" data-mdb-ride="carousel" id="{{ forloop.counter }}">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="row">
+        {% for hotel in hotels%}
+        <div class="col-lg-6">
+          <div class="card">
+            <img src="{{ hotel.img.url }}" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ hotel.name }}</h5>
+              <p class="card-text">{{ hotel.city }}</p>
+                <h5 class="m-0">${{ hotel.cost }}</h5>
+              <a href="/hotels/{{ hotel.id }}" class="btn btn-primary">Read more ...</a>
             </div>
           </div>
-
-            {% endfor %}
-
-
+        </div>
+        {% endfor %}
       </div>
     </div>
+    <div class="carousel-item">
+      <div class="row">
+        {% for hotel in hotels %}
+        <div class="col-lg-6">
+          <div class="card">
+            <img src="{{ hotel.img.url }}" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ hotel.name }}</h5>
+              <p class="card-text">{{ hotel.city }}</p>
+              <a href="/service/hotels/{{ hotel.id }}/" class="btn btn-primary">Read more ...</a>
             </div>
-
-
-
-
-
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+        </div>
 
 
 

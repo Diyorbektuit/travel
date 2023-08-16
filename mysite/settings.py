@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-s6+g6207&tho!+*a%a=#$kt!#4y8itxf=)hw33*kse20xt6#)%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = config('DEBUG')
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -46,6 +46,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'bootstrap5',
     'account',
+    'hotel',
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -84,21 +88,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'my_base',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 
 # Password validation
@@ -140,5 +134,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT =  BASE_DIR / 'staticfilesdirs'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

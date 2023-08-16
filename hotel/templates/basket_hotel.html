@@ -14,7 +14,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -119,16 +119,14 @@
                         <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
                         <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                         <a href="{% url 'package' %}" class="nav-item nav-link">Packages</a>
-                        <a href="{% url 'contact' %}" class="nav-item nav-link">Payment</a>
-                        <a href="{% url 'hotels' %}" class="nav-item nav-link">Hotel booking</a>
                         <div class="nav-item dropdown">
-
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <a href="{% url 'blog' %}" class="dropdown-item">Blog Grid</a>
                                 <a href="{% url 'destination' %}" class="dropdown-item">Destination</a>
                                 <a href="{% url 'guide' %}" class="dropdown-item">Travel Guides</a>
                                 <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
-
+                                <a href="{% url 'blog' %}" class="dropdown-item">Restaurant</a>
                             </div>
                         </div>
 
@@ -150,23 +148,33 @@
     </div>
     <!-- Navbar End -->
 
+    <meta charset="UTF-8">
+    <title>Basket</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="{% static 'images/for_site.png' %}" type="image/x-icon">
+    <style>
+        @media (min-width: 800px) {
+        .h-custom {
+        height: 90vh !important;
+        }
 
-    <!-- Header Start -->
-    <div class="container-fluid page-header">
-        <div class="container">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-                <h3 class="display-4 text-white text-uppercase">Payment</h3>
-                <div class="d-inline-flex text-white">
-                    <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'index' %}">Home</a></p>
-                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                    <p class="m-0 text-uppercase">Payment</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
+        .remove_form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 20px; /* Отступ между формами */
+          left: 10px;
+        }
 
-  <section class="h-100" style="background-color: white;">
+        .remove-button {
+          margin-top: 10px; /* Отступ между кнопками */
+        }
+
+    </style>
+</head>
+<body>
+<section class="h-100" style="background-color: #eee;">
   <div class="container py-5 h-60">
     <div class="row d-flex justify-content-center align-items-center h-50">
       <div class="col">
@@ -176,16 +184,35 @@
             <div class="row">
 
               <div class="col-lg-7">
-                <h5 class="mb-3"><a href="{% url 'index' %}" class="text-body"><i
-                      class="fas fa-long-arrow-alt-left me-2"></i>Home</a></h5>
+                <h5 class="mb-3"><a href="{% url 'hotels' %}" class="text-body"><i
+                      class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
                 <hr>
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
                   <div>
-                    <p class="mb-1">Payment</p>
+                    <p class="mb-1">Shopping cart</p>
                   </div>
 
                 </div>
+
+                <div class="row">
+                    <!-- Здесь отображайте каждый продукт, который находится в корзине -->
+                    <div class="col-lg-7">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ booking.name }}</h5>
+                                <p class="card-text">Price: ${{ booking.cost }}</p>
+                                <p class="card-text">Description: {{ booking.description }}</p>
+                                <img src="{{ booking.img.url }}" alt="{{ booking.name }}" class="img-fluid" style="width: 180px; height: 180px;">
+
+                                </form>
+
+                                <!-- Остальные поля продукта, которые вы хотите отобразить -->
+                            </div>
+                        </div>
+                    </div>
+                     </div>
+
 
 
               </div>
@@ -208,13 +235,13 @@
 
                     <form class="mt-4">
                       <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" class="form-control form-control-lg" size="17"
+                        <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
                           placeholder="Cardholder's Name" />
                         <label class="form-label" for="typeName">Cardholder's Name</label>
                       </div>
 
                       <div class="form-outline form-white mb-4">
-                        <input type="number" id="typeNumber" class="form-control form-control-lg" size="17"
+                        <input type="number" id="typeNumber" class="form-control form-control-lg" siez="17"
                           placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
                         <label class="form-label" for="typeText">Card Number</label>
                       </div>
@@ -242,12 +269,12 @@
 
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">${% for product in products_in_cart %}{{ product.price }}{% if not forloop.last %} + {% endif %}{% endfor %}</p>
+                        <p class="mb-2">${{ booking.cost }}</p>
                     </div>
 
                     <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total(Incl. taxes)</p>
-                        <p class="mb-2">${{ total }}</p>
+                        <p class="mb-2">${{ booking.cost }} </p>
                     </div>
 
                     <button type="button" class="btn btn-info btn-block btn-lg">
@@ -270,78 +297,6 @@
     </div>
   </div>
 </section>
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
-                </a>
-                <p>Our task is to provide you with the best vacation in the best places</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="{% url 'destination' %}"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="{% url 'service' %}"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="{% url 'package' %}"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="{% url 'guide' %}"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="{% url 'testimonial' %}"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="{% url 'destination' %}"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="{% url 'service' %}"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="{% url 'package' %}"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="{% url 'guide' %}"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="{% url 'testimonial' %}"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Tashkent, UZBEKISTAN</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+998901234567</p>
-                <p><i class="fa fa-envelope mr-2"></i>travel@gmail.com</p>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
-    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
-    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
-    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
-    <script src="{% static 'mail/contact.js' %}"></script>
-
-    <!-- Template Javascript -->
-    <script src="{% static 'js/main.js' %}"></script>
 </body>
-
+</body>
 </html>
