@@ -22,6 +22,7 @@ class Hotel(models.Model):
 
 
 
+
 #class HotelReview(models.Model):
 #    user = models.ForeignKey(User, on_delete=models.CASCADE)
 #    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)

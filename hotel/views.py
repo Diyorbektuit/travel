@@ -27,3 +27,5 @@ def hotel_booking(request, pk):
 
 
 
+
+
