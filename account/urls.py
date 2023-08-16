@@ -1,5 +1,4 @@
 from django.urls import path
-from . import views
 from polls_new import views
 from .views import CustomLoginView, CustomRegisterView
 
